@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "gleam build && cp tic_ffi.mjs build/dev/javascript/tic_ffi.mjs && esbuild tic_shim.js --bundle --format=iife --outfile=dist/cart.js"
+  },
+  "devDependencies": { "esbuild": "^0.23.0" }
+}

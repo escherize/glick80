@@ -1,6 +1,4 @@
-pub type Void
-
-@external(javascript, "globalThis", "spr")
+@external(javascript, "../tic_ffi.mjs", "spr")
 pub fn spr(
   id: Int,
   x: Int,
@@ -11,13 +9,13 @@ pub fn spr(
   rotate: Int,
   w: Int,
   h: Int,
-) -> Void
+) -> Nil
 
-@external(javascript, "globalThis", "btn")
+@external(javascript, "../tic_ffi.mjs", "btn")
 pub fn btn(id: Int) -> Bool
 
-@external(javascript, "globalThis", "cls")
-pub fn cls(color: Int) -> Void
+@external(javascript, "../tic_ffi.mjs", "cls")
+pub fn cls(color: Int) -> Nil
 
-@external(javascript, "globalThis", "print")
-pub fn print(text: String, x: Int, y: Int) -> Void
+@external(javascript, "../tic_ffi.mjs", "print")
+pub fn print_(text: String, x: Int, y: Int) -> Nil
