@@ -1,6 +1,10 @@
 {
   "scripts": {
-    "build": "gleam build && cp tic_ffi.mjs build/dev/javascript/tic_ffi.mjs && esbuild tic_shim.js --bundle --format=iife --outfile=dist/cart.js"
-  },
-  "devDependencies": { "esbuild": "^0.23.0" }
+    "clean": "rm -rf build dist",
+    "gleam": "gleam build",
+    "prep:ffi": "cp tic_ffi.mjs build/dev/javascript/tic_ffi.mjs",
+    "bundle": "esbuild tic_shim.js --bundle --platform=browser --format=iife --outfile=dist/cart.js",
+    "build": "npm run gleam && npm run prep:ffi && npm run bundle",
+    "deploy": "npm run build && node scripts/patch-tic.js"
+  }
 }
