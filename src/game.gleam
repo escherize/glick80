@@ -65,6 +65,7 @@ pub fn draw(state: State) -> Nil {
   let State(_t, Player(pos, _vel, _speed)) = state
   let id: Int = 1
   g.cls(14)
+  g.print(g.mouse(), 10, 10)
   g.spr_full(id, pos.x, pos.y, ck: -1, scale: 3.0, flip: 0, rot: 0, w: 2, h: 2)
   g.print("HELLO WORLD!", 84, 84)
   Nil

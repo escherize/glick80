@@ -98,3 +98,45 @@ pub fn btn(id: Int) -> Bool {
 
 @external(javascript, "../tic_ffi.mjs", "btn")
 pub fn btn_(id: Int) -> Bool
+
+// ### btnp
+// `btnp(id hold=-1 period=-1) -> pressed`
+// This function allows you to read the status of one of TIC's buttons.
+// It returns true only if the key has been pressed since the last frame.
+// You can also use the optional hold and period parameters which allow you to check if a button is being held down.
+// After the time specified by hold has elapsed, btnp will return true each time period is passed if the key is still down.
+// For example, to re-examine the state of button `0` after 2 seconds and continue to check its state every 1/10th of a second, you would use btnp(0, 120, 6).
+// Since time is expressed in ticks and TIC runs at 60 frames per second, we use the value of 120 to wait 2 seconds and 6 ticks (ie 60/10) as the interval for re-checking.
+
+@external(javascript, "../tic_ffi.mjs", "btnp")
+pub fn btnp_(id: Int) -> Bool
+
+@external(javascript, "../tic_ffi.mjs", "btnp")
+pub fn btnp_hold(id: Int, hold: Int) -> Bool
+
+@external(javascript, "../tic_ffi.mjs", "btnp")
+pub fn btnp_full(id: Int, hold: Int, period: Int) -> Bool
+
+// ### mouse
+// `mouse() -> x y left middle right scrollx scrolly`
+// This function returns the mouse coordinates and a boolean value for the state of each mouse button,with true indicating that a button is pressed.
+
+pub type Mouse {
+  Mouse(
+    x: Int,
+    y: Int,
+    left: Bool,
+    middle: Bool,
+    right: Bool,
+    scrollx: Int,
+    scrolly: Int,
+  )
+}
+
+pub fn mouse() -> Mouse {
+  let m = mouse_()
+  Mouse(m.0, m.1, m.2, m.3, m.4, m.5, m.6)
+}
+
+@external(javascript, "../tic_ffi.mjs", "mouse")
+pub fn mouse_() -> #(Int, Int, Bool, Bool, Bool, Int, Int)
