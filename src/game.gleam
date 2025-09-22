@@ -1,4 +1,4 @@
-import glick80_api as g
+import glick80_api.{Mouse} as g
 
 pub type V2 {
   V2(x: Float, y: Float)
@@ -44,8 +44,15 @@ fn scale(a: V2, s: Float) -> V2 {
   V2(ax *. s, ay *. s)
 }
 
+fn lerp(a: V2, b: V2, t: Float) -> V2 {
+  let V2(ax, ay) = a
+  let V2(bx, by) = b
+  V2(ax +. { bx -. ax } *. t, ay +. { by -. ay } *. t)
+}
+
 pub fn update(state: State) -> State {
   let State(t, Player(pos, vel, speed)) = state
+
   let up = g.btn(0)
   let down = g.btn(1)
   let left = g.btn(2)
@@ -56,17 +63,29 @@ pub fn update(state: State) -> State {
       clamp(vel.x +. dir(left, right), 0.0 -. speed, speed),
       clamp(vel.y +. dir(up, down), 0.0 -. speed, speed),
     )
+    |> lerp(vel, 0.2)
     |> scale(0.9)
-  let p_next = Player(v2add(pos, v_next), v_next, speed)
-  State(t + 1, p_next)
+  let p_next = v2add(pos, v_next)
+  State(t + 1, Player(p_next, v_next, speed))
 }
 
 pub fn draw(state: State) -> Nil {
   let State(_t, Player(pos, _vel, _speed)) = state
   let id: Int = 1
+  let Mouse(mx, my, _left, _middle, _right, _scrollx, _scrolly) = g.mouse()
   g.cls(14)
-  g.print(g.mouse(), 10, 10)
-  g.spr_full(id, pos.x, pos.y, ck: -1, scale: 3.0, flip: 0, rot: 0, w: 2, h: 2)
+
+  g.circb(mx, my, 20, 2)
+  g.circ(mx, my, 15, 3)
+
+  g.rect(30, 30, mx - 3, my - 3, 4)
+  g.rectb(30, 30, mx, my, 5)
+
+  g.line(0, 0, mx, my, 6)
+
+  g.print(#("mx", mx), 10, 10)
+  g.print(#("my", my), 10, 20)
+  g.spr_full(id, pos.x, pos.y, ck: 14, scale: 3.2, flip: 0, rot: 0, w: 2, h: 2)
   g.print("HELLO WORLD!", 84, 84)
   Nil
 }

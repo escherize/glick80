@@ -1,17 +1,48 @@
 // Re-export TIC-80 globals so Gleam can import them as ES module bindings.
-export const spr = globalThis.spr;
 export const btn = globalThis.btn;
 export const btnp = globalThis.btnp;
-
-export const cls = globalThis.cls;
-// Name avoids clobbering Gleam stdlib names.
-export const print = globalThis.print;
-
 export const circ = globalThis.circ;
 export const circb = globalThis.circb;
-
-
+export const clip = globalThis.clip;
+export const clip_reset = globalThis.clip;
+export const cls = globalThis.cls;
+export const elli = globalThis.elli;
+export const ellib = globalThis.ellib;
+export const exit = globalThis.exit;
+export const fget = globalThis.fget;
+export const font = globalThis.font;
+export const fset = globalThis.fset;
+export const key = globalThis.key;
+export const keyp = globalThis.keyp;
+export const line = globalThis.line;
+export const map = globalThis.map;
+export const memcpy = globalThis.memcpy;
+export const memset = globalThis.memset;
+export const mget = globalThis.mget;
+export const mouse = globalThis.mouse;
+export const mset = globalThis.mset;
+export const music = globalThis.music;
+export const peek = globalThis.peek;
+export const peek1 = globalThis.peek1;
+export const peek2 = globalThis.peek2;
+export const peek4 = globalThis.peek4;
+export const pix = globalThis.pix;
+export const pmem = globalThis.pmem;
+export const poke = globalThis.poke;
+export const poke1 = globalThis.poke1;
+export const poke2 = globalThis.poke2;
+export const poke4 = globalThis.poke4;
+export const print = globalThis.print;
 export const rect = globalThis.rect;
 export const rectb = globalThis.rectb;
-
-export const mouse = globalThis.mouse;
+export const reset = globalThis.reset;
+export const sfx = globalThis.sfx;
+export const spr = globalThis.spr;
+export const sync = globalThis.sync;
+export const time = globalThis.time;
+export const trace = globalThis.trace;
+export const tri = globalThis.tri;
+export const trib = globalThis.trib;
+export const tstamp = globalThis.tstamp;
+export const ttri = globalThis.ttri;
+export const vbank = globalThis.vbank;
