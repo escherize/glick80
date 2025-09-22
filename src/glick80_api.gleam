@@ -654,11 +654,11 @@ pub fn time() -> Int
 // It prints the message parameter to the console in the (optional) color specified.
 
 pub fn trace(message: anything) -> Nil {
-  trace(string.inspect(message), 15)
+  trace_(string.inspect(message), 15)
 }
 
 pub fn trace_clr(message: anything, color: Int) -> Nil {
-  trace(string.inspect(message), color)
+  trace_(string.inspect(message), color)
 }
 
 @external(javascript, "../tic_ffi.mjs", "trace")
