@@ -3,7 +3,7 @@
     "clean": "rm -rf build dist",
     "gleam": "gleam build",
     "prep:ffi": "cp tic_ffi.mjs build/dev/javascript/tic_ffi.mjs",
-    "bundle": "esbuild tic_shim.js --bundle --platform=browser --format=iife --outfile=dist/cart.js",
+    "bundle": "esbuild tic_shim.js --bundle --platform=browser --format=iife --outfile=dist/cart.js --log-override:import-is-undefined=silent",
     "build": "npm run gleam && npm run prep:ffi && npm run bundle",
     "deploy": "npm run build && node scripts/patch-tic.js"
   }

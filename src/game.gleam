@@ -1,5 +1,9 @@
 import glick80_api.{Mouse} as g
 
+const width: Int = 240
+
+const height: Int = 136
+
 pub type V2 {
   V2(x: Float, y: Float)
 }
@@ -69,10 +73,6 @@ pub fn update(state: State) -> State {
   State(t + 1, Player(p_next, v_next, speed))
 }
 
-const width: Int = 240
-
-const height: Int = 136
-
 pub fn draw(state: State) -> Nil {
   let State(_t, Player(pos, _vel, _speed)) = state
   let id: Int = 1
@@ -94,4 +94,10 @@ pub fn draw(state: State) -> Nil {
 
   g.print("HELLO WORLD!", 84, 84)
   Nil
+}
+
+pub fn tic(state: State) -> State {
+  let state = update(state)
+  draw(state)
+  state
 }
